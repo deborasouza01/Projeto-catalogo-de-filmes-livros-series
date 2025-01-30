@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Filmes/Séries/Livros</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #bda0eddc;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        input, textarea, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .catalogo {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .item {
+            background-color: #ffeb3b;/*Cor do bloco div */
+            border-radius: 10px;
+            width: 200px;
+            padding: 15px;
+            text-align: left;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .item button {
+            background-color: #4caf50; /*Cor do botao de marcar como assitido/lido*/
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+        .item button.watched {
+            background-color: #f44336;/*cor do botão de Já assiti/li*/
+        }
+    </style>
+</head>
+<body>
+    <h1>Catálogo de Filmes/Séries/Livros</h1>
+
+    <label for="titulo">Título:</label><br>
+    <input type="text" id="titulo" placeholder="Nome do filme, livro ou série"><br>
+
+    <label for="descricao">Descrição:</label><br>
+    <textarea id="descricao" placeholder="Breve descrição..."></textarea><br>
+
+    <button onclick="addItem()">Adicionar ao catálogo</button>
+
+    <div class="catalogo" id="catalogo"></div>
+
+    <script>
+        function addItem() {
+            const titulo = document.getElementById('titulo').value.trim();
+            const descricao = document.getElementById('descricao').value.trim();
+
+            if (!titulo || !descricao) {
+                alert("Por favor, preencha todos os campos!");
+                return;
+            }
+
+            // Cria o item no catálogo
+            const item = document.createElement('div');
+            item.className = 'item';
+            
+            item.innerHTML = `
+                <h3>${titulo}</h3>
+                <p>${descricao}</p>
+                <button onclick="markAsWatched(this)">Marcar como assistido/lido</button>`;
+
+            // Adiciona ao catálogo
+            document.getElementById('catalogo').appendChild(item);
+
+            // Limpar os campos
+            document.getElementById('titulo').value = '';
+            document.getElementById('descricao').value = '';
+        }
+
+        function markAsWatched(button) {
+            // Marca como assistido/lido, mudando a cor do botão
+            button.classList.add('watched');
+            button.textContent = 'Já assistido/lido';
+        }
+    </script>
+</body>
+</html>
