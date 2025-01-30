@@ -1,0 +1,1 @@
+Este projeto é um catálogo interativo onde os usuários podem compartilhar suas sugestões de filmes, livros e séries, e marcar o que já assistiram ou leram. A ideia é criar um espaço onde as pessoas possam descobrir novas opções de entretenimento e acompanhar o que já consumiram.
